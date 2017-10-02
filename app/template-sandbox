@@ -1,0 +1,18 @@
+                    <div>
+                        <img class="team-model-img" src="<%= img_small %>" />
+                        <section class="team-model-info">
+                            <h2><%= name %></h2>
+                            <h2><%= role %></h2> 
+                            <h2><%= location %></h2>
+                            <h2><%= bio %></h2>
+                            <hr/>
+                            <a class="facebook" href="<%= facebook %>" target="_blank"><i class="fa fa-facebook">&nbsp </i></a>
+                            <a class="twitter" href="<%= twitter %>" target="_blank"><i class="fa fa-twitter">&nbsp</i></a>
+                            <a class="linkedin" href="<%= linkedin %>" target="_blank"><i class="fa fa-linkedin">&nbsp</i></a>
+
+                        </section>
+                    </div>
+                    <div>
+                        <section>
+                        </section>
+                    </div>

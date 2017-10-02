@@ -1,0 +1,1225 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Leeches</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" type="text/css" href="styles/main.css">
+        <!-- endbuild -->
+    <script> 
+    slidesArray = [];
+    function preloaded(data) {
+        console.log("Preloaded");
+        slidesArray.push(data);
+    }
+    </script>
+        
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--> 
+        <div id="image-loader">
+            <ul>
+                <li><img src="images/Leeches-Header-1-Large.jpg" onload="preloaded('A')"/></li>
+                <li><img src="images/Leeches-Header-2-Large.jpg" onload="preloaded('B')"/></li>
+                <li><img src="images/Leeches-Header-3-Large.jpg" onload="preloaded('C')"/></li>
+                <li><img src="images/Leeches-Header-4-Large.jpg" onload="preloaded('D')"/></li>
+                <li><img src="images/Leeches-Header-5-Large.jpg" onload="preloaded('E')"/></li>
+            </ul>
+        </div>
+
+        <div id="overlaycontainer">
+            <div id="overlay-nav">
+            </div>
+            <div id="overlay-app">
+            </div>
+        </div>
+
+        <div id="main-container">
+            <section class="social-media">
+                <div id="float-right">
+                    <a href="https://www.facebook.com/leechesfilm" target="blank"><i class="fa fa-facebook-square">&nbsp </i></a>
+                    <a href="https://twitter.com/leechesfilm" target="blank"><i class="fa fa-twitter-square">&nbsp </i></a>
+                    <a href="https://www.youtube.com/user/farfara1561" target="blank"><i class="fa fa-youtube">&nbsp </i></a>
+                    <a href="http://www.flickr.com" target="blank"><i class="fa fa-flickr">&nbsp </i></a>
+                </div>
+            </section>
+
+            <section class="header-container">
+                <img id="img-header" src="images/Leeches-Header-Large.jpg"/>
+            </section>
+
+            <nav class="nav-container">
+            </nav>
+
+            <div id="app"> 
+            </div>
+
+            <footer id="footer">
+                <div id="hruler"></div>
+                <div class="footer-container">
+                    <div class="float-left">
+                        <a href="http://www.filmkaravan.com" target="blank"><img src="images/logo.jpg"/></a>
+                        <a href="https://www.facebook.com/leechesfilm" target="blank"><i class="fa fa-facebook-square">&nbsp </i></a>
+                        <a href="https://twitter.com/leechesfilm" target="blank"><i class="fa fa-twitter-square">&nbsp </i></a>
+                        <a href="https://www.youtube.com/user/farfara1561" target="blank"><i class="fa fa-youtube">&nbsp </i></a>
+                        <a href="https://www.flickr.com/photos/133104268@N05/" target="blank"><i class="fa fa-flickr">&nbsp </i></a>
+                    </div>
+                    <div class="float-left" id="footer-text">
+                        <div>
+                        <ul>
+                            <li><a href="#/">HOME</a></li>   
+                            <li><a href="#/synopsis">SYNOPSIS</a></li>
+                            <li><a href="#/team">TEAM</a></li>
+                            <li><a href="#/news">NEWS</a></li>
+                            <li><a href="#/contact">CONTACT</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="float-left" id="footer-text">
+                        <div>
+                        <ul>
+                            <li><a href="#/login">LOGIN</a></li>   
+                            <li><a href="#/synopsis">FESTIVALS</a></li>
+                            <li><a href="#/team">CROWDFUNDERS</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div id="notes">
+                        <div>
+                            <p id="notes-copyright"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="developer-container">
+                    <a href="http://onagus.co" target="blank">Site by Onagus</a>
+                </div>
+            </footer>
+        </div>
+    
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/underscore/underscore-min.js"></script>
+        <script src="../bower_components/backbone/backbone.js"></script>
+        
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script>
+
+        //GLOBAL VARIABLES
+        var admin;
+        var names;
+        var loginData = {};
+        var jsondata = {};
+        var theMonth;
+        var today;
+        var theDate = new Date();
+        var getYear = theDate.getFullYear();
+        var getMonth = theDate.getMonth();
+        var getDate = theDate.getDate(); 
+        var headHeight;
+
+
+        function setVars() {
+            console.log("setvars");
+            //Window Scroll top
+             windowTop = $(window).scrollTop();
+             //Window width
+             windowWidth = $(window).width();
+             //Height of the img header in pixels
+             windowRatio = (windowWidth / 3.25) + 10;
+             //Above plus offset adjustment for spacing discrepancy in the nav bar
+             windowRatioPlus = (windowWidth / 3.25) + 13;
+             //Height of the img header small in pixels
+             windowSmallRatio = (windowWidth / 3.3) + 25;
+             //Location of the top of the nav bar relative to the img header
+             navMargin = windowWidth / 10.5; 
+             //Neg value of the above
+             negMargin = navMargin * -1;
+             //Img header minus height of the nav bar location
+             numToNeg = ((windowRatio * -1) - navMargin) + 6;
+             numToNegSmall = windowSmallRatio * -1;
+        }
+        setVars();
+
+        function navReset() {
+            diaryJSON = [];
+            console.log("navreset");
+            if (windowWidth <= 550) {
+                $(window).scrollTop(windowSmallRatio);
+            }
+
+            else if(windowTop >= windowRatio) {
+                $(window).scrollTop(windowRatioPlus);
+                $('#app').css({"margin-top" : "20px"});
+            }
+            //$('.nav-container').css({"margin-top" : });
+        }
+
+        function imageSlide() {
+            //Make sure that the IMG SRC height is set to headheight
+            //$('#img-header').css("height" : headHeight);
+            $('.header-container').css({"height" : headHeight});
+            //Grab all the img elements with the id of image-loader
+            var slides = $('#image-loader img');
+            //Get the number of elements pulled and save as variable
+            var slideCount = slides.length; 
+            //Create an empty array container
+            var slideSrc = [];
+            console.log("imageSLide");
+
+            //console.log(slidesArray);
+            if (slideCount === slidesArray.length) {
+               //Go through each of the slide elements 
+                slides.each(function(i, data){
+                    //Get the src attribute for each slide element
+                    imgSrc = data.src;
+                    //Push each src onto the slideSrc array
+                    slideSrc.push(imgSrc);
+                });
+                //Go through each of the elements in the slideSrc array
+                //For each element, run a function that goes through each value
+                //Then sets the src attribute to the new value
+                $.each(slideSrc, function(i, src){
+                    setTimeout(function(){
+                        var $imgheader = $('#img-header');
+                        $imgheader.hide();
+                        $imgheader.attr("src", src).fadeIn(500);     
+                        }, 
+                        5000 * i);
+                });
+            }
+        }
+        //**** CHECK WINDOW WIDTH Function ****//
+        //if the width of the window is less than 550
+        //Change the background header image 
+        function checkWin() {
+            //set global variables
+            console.log("checkwin");
+            winWidth = $(window).width();
+            winScroll = $(window).scrollTop();
+            headHeight = (winWidth / 2.5) + 2; 
+            var numtoNeg = headHeight * -1;
+            //if the window width is less than or equal to 550 
+            //change the img header to the small version
+            if (winWidth <= 550) {
+                imageSlide();
+                //Create a new Nav view for small version
+                $(document).ready(function(){
+                   var navViewSmall = new NavViewSmall();
+                    var nvs = navViewSmall.render().el;
+                    $('.nav-container').html(nvs); 
+                });
+                
+            }
+            //if the window width is greater than or equal to 550 
+            //change the img header to the small version
+            else if(winWidth >= 550) {
+                imageSlide();
+                //Create a new Nav View for the large version
+                $(document).ready(function(){
+                    var navViewLarge = new NavViewLarge();
+                    var nvl = navViewLarge.render().el;
+                    $('.nav-container').html(nvl);
+                });
+                
+            }
+            
+        }
+ 
+        $(window).scroll(function(){
+             setVars();  
+             //If the width of the window is greater than 550 AND the header background image has scrolled off the
+             //page...
+              if(windowWidth > 550 && windowTop >= windowRatio) { 
+                $('.nav-container').css({"position":"fixed", "margin-top": numToNeg});
+                $('.nav-container li').css({"margin-top":"-15px"});
+              }
+              //If the width of the window is less than 550 AND the header background image has scrolled off the
+             //page...
+              else if(windowWidth <= 550 && windowTop >= windowRatio) {
+                $('.nav-container').css({"position":"fixed", "margin-top": numToNegSmall});
+                $('.nav-container li').css({"margin-top":"-15px"});
+              }
+
+              else{
+                $('.nav-container').css({"position":"relative", "margin-top":""});
+                $('.nav-container li').css({"margin-top":""});
+              }
+        });
+
+        //**** Window Re-size Funtion ****
+        $(window).resize(function(){ 
+            checkWin();
+            navReset();
+            windowRatio = (winWidth / 3.25) - 10;
+            var imgHeight = (winWidth / 3.25) + 13;
+            if (winScroll >= windowRatio) {
+                $(window).scrollTop(imgHeight);
+            }
+        });
+
+        //**** Copyright Year Function ****
+        function copyright(){
+            var fullDate = new Date();
+            var getYear = fullDate.getFullYear();
+            var cr = "&copy Copyright " + getYear + " Film Karavan Productions";
+            $('#notes-copyright').html(cr);
+            }
+        copyright(); 
+
+        //Set the whole date including month, date, year
+        function thisDay() {
+                month = {
+                        0 : "January",
+                        1 : "February",
+                        2 : "March",
+                        3 : "April",
+                        4 : "May",
+                        5 : "June",
+                        6 : "July",
+                        7 : "August",
+                        8 : "September",
+                        9 : "October",
+                        10 : "November",
+                        11 : "December"
+                };
+                for (i=0; i<12; i++) {
+                    theMonth = month[getMonth];  
+                }
+                today = theMonth + "." + getDate + "." + getYear;
+        }
+        thisDay(); 
+
+        //SendCONTACT data to the server
+        function contactphp() {
+            $.ajax({
+                type: 'POST',
+                url: 'ajax.php',
+                data: jsondata,
+                success: function(response){
+                     
+                },
+                error: function(xhr){
+                 
+                }
+            });
+        }
+
+        //Send the diaryOBJ to the php file on the server
+        function postDiary() {
+            var postAJAX = $.ajax({
+                type: 'POST',
+                url: 'diary.php',
+                data: diaryOBJ,
+                success: function(response){
+                    
+                },
+                error: function(xhr){
+                 
+                }
+            });
+            //Once the AJAX call is made, then  hide the overlaycontainer and reload location
+            postAJAX.then(function(){
+                $('#overlaycontainer').css({"display":"none","z-index":"-1"});
+                window.location.href = "";
+            });
+        }
+
+        function postNews() {
+            var postAJAX = $.ajax({
+                type: 'POST',
+                url: 'news.php',
+                data: newsOBJ,
+                success: function(response){
+                    
+                },
+                error: function(xhr){
+                 
+                }
+            });
+            //Once the AJAX call is made, then  hide the overlaycontainer and reload location
+            postAJAX.then(function(){
+                $('#overlaycontainer').css({"display":"none","z-index":"-1"});
+                window.location.href = "";
+            });
+        }
+
+        function setAdmin() { 
+            var data = loginData.username;
+            var loginUser = data.toLowerCase();
+            loginData.username = loginUser;
+            names = {
+                "payal" : "Payal Sethi",
+                "director" : "Payal Sethi",
+                "apoorva" : "Apoorva Marur",
+                "samir" : "Samir",
+                "writer" : "Samir",
+                "pooja" : "Pooja Kohli Taneja",
+                "riddhi" : "Riddhi Desai",
+                "farooq" : "Farooq Hundekar",
+                "lipi" : "Lipi Bharadwaj",
+                "sourav" : "Sourav Paul",
+                "toshi" : "Toshi Sugano"
+            };
+            admin = names[loginUser];
+        }
+
+        function loginPermission() {
+            $.ajax({
+                type: 'POST',
+                url: 'login.php',
+                data: loginData,
+                success: function(response){
+                    if (response == true) {
+                        $("#overlay-nav").empty();
+                        $("#overlay-app").empty();
+                        window.location.href = "#/admin/diary";
+                    } 
+                    else {
+                        $('#login-error').html("Wrong username and/or password");
+                    }
+                },
+                error: function(xhr){
+                
+                }
+            });
+        }
+
+        //Check login inputs to verify
+        //If response is true, then run postDiary
+        function diaryVerify() {
+            $.ajax({
+                type: 'POST',
+                url: 'login.php',
+                data: loginData,
+                success: function(response){
+                    if (response == true) {
+                        postDiary();
+                    } 
+                    else {
+                        alert('Please Log In');
+                    }
+                },
+                error: function(xhr){
+                
+                }
+            });
+        }
+
+        function newsVerify() {
+            $.ajax({
+                type: 'POST',
+                url: 'login.php',
+                data: loginData,
+                success: function(response){
+                    if (response == true) {
+                        postNews();
+                    } 
+                    else {
+                        alert('Please Log In');
+                    }
+                },
+                error: function(xhr){
+                }
+            });
+        }
+        //Get all inputs from the screen and then values to diaryOBJ variable;
+        function getInputs() {
+            $(':input').each(function(i, data){
+            var that = $(this);
+            var key = that.attr('name');
+            var value = that.val();
+            diaryOBJ[key] = value;
+            diaryOBJ['date'] = today;
+            diaryOBJ['user'] = "Posted by : " + admin;
+            });
+        }
+
+        function newsInputs() {
+            $(':input').each(function(i, data){
+            var that = $(this);
+            var key = that.attr('name');
+            var value = that.val();
+            newsOBJ[key] = value;
+            newsOBJ['date'] = today;
+            newsOBJ['user'] = "Posted by : " + admin;
+            });
+        }
+
+
+        //**** BEGIN BACKBONE MVC CODE ****
+
+        //**** NAV BAR VIEW(s)****
+        var NavViewLarge = Backbone.View.extend({
+            tagName: 'div',
+            className: 'nav-menu-container',
+            template: _.template('<ul><div id="nav-menu-a"><li><a id="nav-home" href="#/">HOME</a></li><li><a id="nav-synopsis" href="#/synopsis">SYNOPSIS</a></li><li><a id="nav-news" href="#/news">NEWS</a></li><li><a id="nav-diary" href="#/diary">DIARY</a></li></div><div id="nav-menu-b"><li><a id="nav-team" href="#/team">TEAM</a></li><li><a id="nav-news" href="#/watch">WATCH</a></li><li><a id="nav-contact" href="#/contact">CONTACT</a></li></div></ul>'),
+            render: function(){
+                this.$el.html(this.template());
+                return this;
+            }
+        });
+
+        var NavViewSmall = Backbone.View.extend({
+            tagName: 'div',
+            className: 'nav-menu-container',
+            template: _.template('<ul><li><a href=""><i id="nav-bars" class="fa fa-bars">&nbsp</i></a></li></ul>'),
+            render: function(){
+                this.$el.html(this.template());
+                return this;
+            }
+        });
+
+        //**** INDEX MODEL ****
+        var IndexModel = Backbone.Model.extend({
+           defaults: {}
+        });
+
+        //INDEX MODEL INSTANCES
+        var indexModel = new IndexModel({   
+        "image1" : "images/img-1.jpg",
+        "h1" : "Introduction",
+        "p1" : "Officially, India is a developing country, but the reality of existence for the underbelly of the population that lives below the poverty line is very much a third-world one. I wrote LEECHES to highlight the practice of contract marriages in communities so disadvantaged that they have allowed themselves to mask what is blatantly a sex-slave trade behind the veil of acceptable religious ritual.",
+        "p2" : "In Hyderabad’s old city, rich businessmen prey on the virginity of underage girls in an archaic practice that is still propagated under the auspices of Islamic marriage laws, which allow a man to have four wives at a time. These men take brides for short periods, sometimes just a night, with rates varying according to the duration of the marriage, leading to the nickname 'one-day bride'. An intricate web of opportunists facilitate this flesh trade, including many clerics, who work for clients with a predilection for teenage-virgin brides.",
+        "image2" : "images/img-2.jpg",
+        "p3" : "I came across this practice while living in the city two years ago, thereafter researching the facts through Shaheen, an NGO that helps girls who run away from such arrangements, forced upon them by desperate or greedy families.", 
+        "p4" : "I chose the character of Raisa as the protagonist because she represents the great courage of spirit possessed by girls who refuse to accept these sham marriages as their fate.  Regardless of Raisa’s fate in the film, her actions bring hope to a dark reality. With his film, it is my aim to capture the frenetic, terrifying energy of the old city & the desperation of its people, set against the timelessness of the Charminar, a metaphor for Raisa’s eternal sacrifice in the film."
+        });
+        
+        //**** Index View ****
+        var IndexView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'index-container',
+            template: _.template('<section id="index-container">' +
+                '<h1><%= h1 %></h1>' +
+                '<hr>' +
+                '<p><%= p1 %></p>' + 
+                '<p><%= p2 %></p>' +
+                '<img id="index-img" src="<%= image1 %>"/>' +
+                '<p><%= p3 %></p>' +
+                '<p><%= p4 %></p>' +
+                '<img id="index-img" src="<%= image2 %>"/>' +
+            '</section>'), 
+            render: function(){
+                view = this.model.toJSON();
+                this.$el.html(this.template(view));
+                return this;
+            }
+
+        });
+
+        //**** SYNOPSIS MODEL ****
+        var SynopsisModel = Backbone.Model.extend({
+            defaults: {}
+
+        });
+
+        var synopsisModel = new SynopsisModel({
+            "p1" : "In the chaotic old city of Hyderabad, 16-year old Raisa lives on the brink of poverty with her Ammi and three younger sisters. When Ammi is coerced into promising her second daughter, Zainab, to a foreign businessman from the Middle East in exchange for cash, Raisa decides that she has to save her younger sister. ",
+            "p2" : "This ancient custom is a last resort for families in Muslim ghettos, and the alliance is brokered by a pimp, Bilkis, and her helper, Nawaz. A cleric draws up both marriage and divorce contracts simultaneously, so that the businessman may end the ‘marriage’ whenever he is ready to leave the city.  Desperate to find a way out for Zainab, Raisa hatches an improbable plan with the help of her best friend. She sets about looking for an old wive’s remedy that will restore her own virginity, so that she may take the place of Zainab, who resembles her strongly.",
+            "image1" : "images/imgRaisa.jpg"
+        });
+
+        //**** SYNPOSIS VIEW ****
+        var SynopsisView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'synopsis-container',
+            template: _.template(
+                    '<div id="synopsis-view">' + 
+                            '<img id="synopsis-img" src="<%= image1 %>"/>' +
+                            '<div id="synopsis-p"><p><%= p1 %></p></div><div id="synopsis-p"><p><%= p2 %></p></div>' +
+                    '</div>'
+                 ), 
+            render: function(){
+                sview = this.model.toJSON();
+                this.$el.html(this.template(sview));
+                return this;
+            }
+        });
+
+        // **** CONTACT VIEW ****
+        //On Submit, run a function that serializes the JSON data and sends to the server
+        var ContactView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'contact-container',
+            template: _.template(
+                '<div id="contact-view">' +
+                    '<div id="contact-info"><h2>Email Us!</h2><br><h4>We would love to hear from you!</h4><br><ul><li><h3>Director/Producer : <a href="mailto:payalsethi1202@gmail.com">Payal Sethi</a></h3></li><li><h3>General : <a href="mailto:info@leechesfilm.com.com">info@leechesfilm.com</a></h3></li><li><h3>Press : <a href="mailto:press@leechesfilm.com">press@leechesfilm.com</a></h3></li><li><h3>Phone : <a href="tel:+111-111-1111">+1 (432)-123-4567</a></h3></li></ul></div>' +
+                    '<div id="vruler1"></div>' +
+                    '<div id="contact-info">' +
+                        '<form method="post" id="contact-f"><p><label for="firstname" class="contact-input-label">First Name</label> <br/><input class="contact-input-text" name="firstname" type="text" maxlength="30" autofocus required /></p><p><label for="lastName" class="contact-input-label">Last Name</label> <br/><input class="contact-input-text" name="lastname" type="text" maxlength="30" required/></p><p><label for="email" class="contact-input-label">E-Mail</label> <br/><input class="contact-input-text" name="email" type="email" maxlength="40" required/></p><p><label for="telephone" class="contact-input-label">Phone Number</label> <br/><input class="contact-input-text" name="telephone" type="tel" /></p><p><label for="message" class="contact-input-label">Message</label> <br/><textarea class="contact-input-text" id="contact-text-message" name="message"></textarea></p><p id="submit-button">Submit</p></form>' +
+                    '</div>' +
+                    '<div id="vruler2"></div>' +
+                    '<div id="contact-social-media"><h2>Social Media</h2><ul><li><h3><a href="http://www.flickr.com" target="blank"><i class="fa fa-flickr">&nbsp </i></a>&nbsp&nbspFlickr</h3></li><li><h3><a href="https://twitter.com/leechesfilm" target="blank"><i class="fa fa-twitter"></i></a>&nbsp&nbspTwitter</h3></li><li><h3><a href="https://www.facebook.com/leechesfilm" target="blank"><i class="fa fa-facebook-square">&nbsp </i></a>&nbsp&nbspFacebook</h3></li><li><h3><a href="https://www.youtube.com/user/farfara1561" target="blank"><i class="fa fa-youtube"></i></a>&nbsp&nbspYoutube</h3></li></ul></div>' +
+                '</div>'
+            ),
+
+            events: {
+                "click #submit-button": "postJSON"
+            },
+
+            postJSON: function(){ 
+                var permission = true;
+                    //$(this).find('[name]').each(function(i, data) {
+                    $(':input').each(function(i, data){
+                        //Get input fields and set key value variables
+                        var that = $(this); 
+                        var key = that.attr('name');
+                        var value = that.val();
+                        jsondata[key] = value;
+                        //Security measures
+                        var characters = ["/", "{", "}", "[", "]", "*", "&", "%", "$", "#", "(", ")", "=", "'", '"'];
+                        for (var i = 0; i < value.length; i++) {
+                            for (var h = 0; h < characters.length; h++){
+                                if (value.slice(i, i+1) === characters[h]) {    
+                                permission = false;
+                                }
+                            } 
+                        }
+
+                    });
+             
+                if (permission === true){
+                    contactphp();
+                }
+                if (permission === false) {
+                    alert("For security reasons, please refrain from using the characters /, {}, [], *, &, %, $, #, (), =, and quotation marks.");
+                }
+                return false;
+            },    
+
+                render: function(){
+                    this.$el.html(this.template());
+                    return this;
+                }
+        });
+
+        //**** NEWS MODEL CLASS ****
+        var NewsModel = Backbone.Model.extend({
+            defaults: {}
+        });
+
+        //**** NEWS COLLECTION ****
+        var NewsItemList = Backbone.Collection.extend({
+            model: NewsModel
+        });
+
+        var newsItemList = new NewsItemList();
+
+        var articleList = [];
+
+
+        //**** NEWS VIEW ****
+        var NewsView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'news-container',
+            template: _.template(
+                '<section>' +
+                    '<h1><%= title %></h1>' +
+                    '<h3><%= location %></h3>' +
+                    '<h3><%= user %></h3>' +
+                    '<h3><%= date %></h3>' +
+                    '<hr>' +
+                    '<p><%= p1 %></p>' +
+                    '<img class="news-model-img" src="<%= image1 %>"/>' + 
+                    '<p><%= p2 %></p>' +
+                    '<img class="news-model-img" src="<%= image2 %>"/>' + 
+                    '<hr>' +
+                '</section>'
+                ),
+            render: function(){
+                var articleview = this.model.toJSON();
+                this.$el.html(this.template(articleview));
+                return this;
+            }
+        });
+
+        //**** NEWS COLLECTION VIEW ****
+        var NewsListView = Backbone.View.extend(
+            {
+                 tagName: 'div',
+                 className: 'news-model-container',
+                 
+                 initialize: function() {
+                    this.collection.on('reset', this.addAll, this);
+                 },
+                 addOne: function(data) {
+                    var newsView = new NewsView({model: data});
+                    this.$el.append(newsView.render().el);
+                 },
+                 addAll : function() {
+                    this.collection.forEach(this.addOne, this);
+                 },
+
+                 render: function(){
+                    this.addAll();
+                    return this;
+                 }
+            }
+        );
+
+        //**** LOGIN NAVIGATION BAR VIEW ****
+        var LoginNavView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'login-nav-container',
+            template: _.template('<ul><li><h2>ADMIN</h2></li><li id="overlay-float-right"><a href=""><h2>X</h2></a></li></ul>'),
+            render: function(){
+                this.$el.html(this.template());
+                return this;
+            }
+        });
+
+
+        //**** LOGIN INPUTS VIEW ****
+        var LoginModelView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'login-model-container',
+            template: _.template('<p>{Please Log In}</p><hr/><form method="post" id="login-admin"><p><br/><input id="login-username" name="username" type="text" maxlength="100"></input></p><div class="diary-add" id="add-title"><p>Username</p></div><p><br/><input id="login-password" name="password" type="password" maxlength="100"></input></p><div class="diary-add" id="add-img1"><p>Password</p></div><br/><br/><div id="login-error"></div>><div id="submit-login"><p id="login-submit">SUBMIT</p></div></form>'),
+            events: {"click #login-submit" : "getLogin"},
+            getLogin: function() {
+                loginData = {};
+
+                $(':input').each(function(i, data){
+                    var that = $(this); 
+                    var key = that.attr('name');
+                    var value = that.val();
+                    loginData[key] = value;
+                });
+                setAdmin();
+
+                loginPermission();
+
+            },
+            render: function(){
+                this.$el.html(this.template());
+                return this;
+            }
+        });
+
+        var AdminNavView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'admin-nav-container',
+            template: _.template('<ul><li><a id="admin-diary" href="#/admin/diary"><h2>DIARY&nbsp</h2></a></li><li><div id="vertical-div"></div></li><li><a id="admin-news" href="#/admin/news"><h2>NEWS</h2></a></li><li id="overlay-float-right"><a href=""><h2>X</h2></a></li></ul>'),
+            events: {
+                "click #admin-diary": "adminDiary",
+                "click #admin-news": "adminNews"
+            },
+            adminDiary : function() {
+                $('#overlay-nav').css({"background-color":"#841a02"});
+            },
+            adminNews : function() {
+                $('#overlay-nav').css({"background-color":"#31837c"});
+            },
+            render: function(){
+                this.$el.html(this.template());
+                return this;
+            }
+        });
+
+        var AdminDiaryView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'admin-nav-container',
+            template: _.template('<p>{CREATE A DIARY ENTRY}</p><hr/><form method="post" id="diary-edit"><p><br/><input id="diary-edit-title" name="title" type="text" maxlength="100"></input></p><div class="diary-add" id="add-title"><p>Add Title</p></div><p><br/><input id="diary-edit-image" name="image1" type="text" maxlength="100" placeholder="Example http://flickr.com/photos/57s4895959/c.jpg"></input></p><div class="diary-add" id="add-img1"><p>Add Image 1</p></div><p><textarea id="diary-edit-p1" name="p1" type="text" maxlength="500" autofocus ></textarea></p><div class="diary-add" id="add-p1"><p>Add&nbspText Block&nbsp1</p></div><p><br/><input id="diary-edit-image" name="image2" type="text" maxlength="100"></input></p><div class="diary-add"><p>Add Image 2</p></div><p><textarea id="diary-edit-p2" name="p2" type="text" maxlength="500" autofocus ></textarea></p><div class="diary-add"><p>Add&nbspText Block&nbsp2</p></div><br><br><div id="preview-diary"><p>Preview</p></div><div id="diary-article-preview"></div><div id="submit-diary"><a href=""><p>Publish</p></a></div>'),
+            events: {
+                "click #preview-diary": "previewDiary",
+                "click #submit-diary": "submitDiary",
+                "click #overlay-float-right": "closeOverlay"
+                    },
+            previewDiary: function(e) {
+                e.preventDefault();
+                previewList = [];
+
+                getInputs();
+
+                if(diaryOBJ.image1 === "") {
+                    diaryOBJ['image1'] = "images/blank.jpg";
+                }
+
+                if(diaryOBJ.image2 === "") {
+                    diaryOBJ['image2'] = "images/blank.jpg";
+                }
+
+                previewList.push(diaryOBJ);
+                previewCollectionList.reset(previewList);
+                var previewCollectionView = new PreviewCollectionView({collection: previewCollectionList});
+                var pmv = previewCollectionView.render().el;
+                $('#diary-article-preview').html(pmv);  
+            },
+            submitDiary : function(e) {
+                e.preventDefault(); 
+
+                if (loginData === undefined) {
+                    window.location.href = "#/login";
+                }
+                
+                diaryVerify();
+
+            },
+            closeOverlay: function(e) {
+                articleList = [];
+                $(':input').each(function(index, obj) {
+                    var that = $(this);
+                    that.empty();
+                });
+                $('#overlaycontainer').css({"z-index":"-1"});
+                location.reload();
+                return false;
+                },
+                render: function() {
+                    this.$el.html(this.template());
+                    return this;
+                }
+        });
+
+        var AdminNewsView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'admin-news-container',
+            template: _.template('<p>{CREATE A NEWS ENTRY}</p><hr/><form method="post" id="news-edit"><p><br/><input id="news-edit-title" name="title" type="text" maxlength="100"></input></p><div class="news-add" id="add-title"><p>Add Title</p></div><p><br/><input id="news-edit-image" name="image1" type="text" maxlength="100" placeholder="Example http://flickr.com/photos/57s4895959/c.jpg"></input></p><div class="news-add" id="add-img1"><p>Add Image 1</p></div><p><textarea id="news-edit-p1" name="p1" type="text" maxlength="500" autofocus ></textarea></p><div class="news-add" id="add-p1"><p>Add&nbspText Block&nbsp1</p></div><p><br/><input id="news-edit-image" name="image2" type="text" maxlength="100"></input></p><div class="news-add"><p>Add Image 2</p></div><p><textarea id="news-edit-p2" name="p2" type="text" maxlength="500" autofocus ></textarea></p><div class="news-add"><p>Add&nbspText Block&nbsp2</p></div><br><br><div id="preview-news"><p>Preview</p></div><div id="news-article-preview"></div><div id="submit-news"><a href=""><p>Publish</p></a></div>'),
+            events: {
+                "click #preview-news": "previewNews",
+                "click #submit-news": "submitNews",
+                "click #overlay-float-right": "closeOverlay"
+                    },
+            previewNews: function(e) {
+                e.preventDefault();
+                previewList = [];
+
+                newsInputs();
+
+                if(newsOBJ.image1 === "") {
+                    newsOBJ['image1'] = "images/blank.jpg";
+                }
+
+                if(newsOBJ.image2 === "") {
+                    newsOBJ['image2'] = "images/blank.jpg";
+                }
+
+                previewList.push(newsOBJ);
+                previewCollectionList.reset(previewList);
+                var previewCollectionView = new PreviewCollectionView({collection: previewCollectionList});
+                var pmv = previewCollectionView.render().el;
+                $('#news-article-preview').html(pmv);  
+            },
+            submitNews : function(e) {
+                e.preventDefault(); 
+
+                if (loginData === undefined) {
+                    window.location.href = "#/login";
+                }
+                
+                newsVerify();
+
+            },
+            closeOverlay: function(e) {
+                articleList = [];
+                $(':input').each(function(index, obj) {
+                    var that = $(this);
+                    that.empty();
+                });
+                $('#overlaycontainer').css({"z-index":"-1"});
+                location.reload();
+                return false;
+                },
+                render: function() {
+                    this.$el.html(this.template());
+                    return this;
+                }
+        });
+
+        var PreviewModel = Backbone.Model.extend({
+            defaults: {}
+        });
+
+        var notdefined = false;
+        //Create an empty Javascript Object to push diary form inputs 
+        
+        var diaryOBJ = {
+            "image1" : "",
+            "image2" : "",
+            "title" : "",
+            "user" : "",
+            "date" : today,
+            "p1" : "",
+            "p2" : ""
+        };
+
+        var newsOBJ = {
+            "image1" : "",
+            "image2" : "",
+            "title" : "",
+            "user" : "",
+            "location" : "Bangalore",
+            "date" : today,
+            "p1" : "",
+            "p2" : ""
+        };
+
+        // **** Preview Collection LIST **** //
+        var previewList = [];
+
+        var PreviewCollectionList = Backbone.Collection.extend({
+            model: PreviewModel
+        });
+        
+        var previewCollectionList = new PreviewCollectionList();
+
+        //Define a diary model view class
+        var PreviewModelView = Backbone.View.extend({
+            tagName: 'preview-model-container',
+            template: _.template(
+                '<section>' +
+                    '<h1><%= title %></h1>' +
+                    '<h3><%= user %></h3>' +
+                    '<h3><%= date %></h3>' +
+                    '<hr>' +
+                    '<p><%= p1 %></p>' +
+                    '<img class="diary-model-img" src="<%= image1 %>"/>' + 
+                    '<p><%= p2 %></p>' +
+                    '<img class="diary-model-img" src="<%= image2 %>"/>' + 
+                '</section>'
+                ),
+            render: function(){
+                var pmv = this.model.toJSON();
+                this.$el.html(this.template(pmv));
+                return this;
+            }
+        });
+
+        var PreviewCollectionView = Backbone.View.extend(
+            {
+                 tagName: 'div',
+                 className: 'preview-collection-container',
+                 
+                 initialize: function() {
+                    this.collection.on('reset', this.addAll, this);
+                 },
+                 addOne: function(data) {
+                    var previewModelView = new PreviewModelView({model: data});
+                    this.$el.append(previewModelView.render().el);
+                 },
+                 addAll : function() {
+                    this.collection.forEach(this.addOne, this);
+                 },
+
+                 render: function(){
+                    this.addAll();
+                    return this;
+                 }
+            }
+        );
+
+        //Define Diary Model class
+        var DiaryModel = Backbone.Model.extend({
+            defaults: {}
+        });
+
+        //Create an empty array to contain diary model instances
+        var diaryJSON = [];
+        
+        var articleList = [];
+        
+        //Define the diary collection class
+        var DiaryCollectionList = Backbone.Collection.extend({
+            model: DiaryModel
+        });
+
+        //Create a diary collection instance
+        var diaryCollectionList = new DiaryCollectionList();
+    
+        //Define a diary model view class
+        var DiaryModelView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'diary-model-container',
+            template: _.template(
+                '<section>' +
+                    '<h1><%= title %></h1>' +
+                    '<h3><%= user %></h3>' +
+                    '<h3><%= date %></h3>' +
+                    '<hr>' +
+                    '<p><%= p1 %></p>' +
+                    '<img class="diary-model-img" src="<%= image1 %>"/>' + 
+                    '<p><%= p2 %></p>' +
+                    '<img class="diary-model-img" src="<%= image2 %>"/>' + 
+                '</section>'
+                ),
+            render: function(){
+                var dmv = this.model.toJSON();
+                this.$el.html(this.template(dmv));
+                return this;
+            }
+        });
+
+        //Define a diary collection view
+        var DiaryCollectionView = Backbone.View.extend(
+            {
+                 tagName: 'div',
+                 className: 'diary-collection-container',
+                 
+                 initialize: function() {
+                    this.collection.on('reset', this.addAll, this);
+                 },
+                 addOne: function(data) {
+                    var diaryModelView = new DiaryModelView({model: data});
+                    this.$el.append(diaryModelView.render().el);
+                 },
+                 addAll : function() {
+                    this.collection.forEach(this.addOne, this);
+                 },
+
+                 render: function(){
+                    this.addAll();
+                    return this;
+                 }
+            }
+        );
+
+        //**** TEAM MODEL CLASS **** 
+        var TeamModel = Backbone.Model.extend({
+           defaults: {}
+        });
+        
+        //**** COLLECTIONS ****
+        //Define the collection class
+        var TeamList = Backbone.Collection.extend({
+            model: TeamModel
+        });
+        //Create a new instance of the team collection 
+        var teamList = new TeamList();
+        //Create an array that contains each team member models
+        var team = [];
+
+
+        //**** MODEL VIEW for each unique model ****
+        var ModelView = Backbone.View.extend({
+            tagName: 'div',
+            className: 'team-model-container',
+            template: _.template(
+                '<div class="model-view">' +
+                    '<img class="team-model-img" src="<%= img_small %>"/>' +
+                    '<div class="team-model-info">' +
+                        '<h2><%= name %></h2>' +
+                        '<h3><%= role %></h3>' +
+                        '<h3><%= location %></h3>' + 
+                        '<p><%= bio %></p>' + 
+                        '<hr/>' +
+                        '<a class="facebook" href="<%= facebook %>" target="_blank"><i class="fa fa-facebook">&nbsp </i></a><a class="twitter" href="<%= twitter %>" target="_blank"><i class="fa fa-twitter">&nbsp</i></a><a class="linkedin" href="<%= linkedin %>" target="_blank"><i class="fa fa-linkedin">&nbsp</i></a>' + 
+                    '</div>' +
+                '</div>'
+                ), 
+            render: function(){
+                mv = this.model.toJSON();
+                this.$el.html(this.template(mv));
+                return this;
+            }
+        });
+
+        //**** COLLECTION VIEWS ****
+
+        //Using the teamList collection, create a collection view class
+        var TeamListView = Backbone.View.extend(
+            {
+                 tagName: 'div',
+                 className: 'team-model-container',
+                 
+                 initialize: function() {
+                    this.collection.on('reset', this.addAll, this);
+                 },
+                 addOne: function(data) {
+                    var modelView = new ModelView({model: data});
+                    this.$el.append(modelView.render().el);
+                 },
+                 addAll : function() {
+                    this.collection.forEach(this.addOne, this);
+                 },
+
+                 render: function(){
+                    this.addAll();
+                    return this;
+                 }
+            }
+        );
+    
+        //**** ROUTERS ****
+        var Router = Backbone.Router.extend({
+            routes: {
+                "": 'Home',
+                "team": 'Team',
+                "news": 'News',
+                "diary": 'Diary',
+                "synopsis": 'Synopsis',
+                "contact": 'Contact',
+                "login": 'Admin-Login',
+                "admin/diary": 'Admin-Diary',
+                "admin/news": 'Admin-News'
+            }
+        });                     
+
+        var router = new Router();
+
+        router.on('route:Home', function() {
+            navReset();
+            $('.index-container').css({"margin-top": "50px"});
+            var indexView = new IndexView({model: indexModel});
+            var iv = indexView.render().el;
+            $('#app').html(iv);
+        });
+
+        router.on('route:News', function() {
+            navReset();
+            var getJSON = $.getJSON("news.json");
+            getJSON.then(function(data) {
+                $.each(data, function(index, obj) {
+                    articleList.push(obj);
+                });
+            }).then(function(){
+                newsItemList.reset(articleList);
+                $('.news-model-container').css({"margin-top": "20px"});
+                var newsListView = new NewsListView({collection: newsItemList}); 
+                var nv = newsListView.render().el;
+                $('#app').html(nv);
+            });
+            //Reset the newslist collection with variables in newskeys
+            
+        });
+
+        router.on('route:Diary', function() {
+            navReset(); 
+            //make ajax call to access diary.json
+            var getJSON = $.getJSON("diary.json");
+            getJSON.then(function(data) {
+                $.each(data, function(index, obj) {
+                    diaryJSON.push(obj);
+                });
+            }).then(function(){
+                diaryCollectionList.reset(diaryJSON);
+                $('.diary-collection-container').css({"margin-top": "20px"});
+                var diaryCollectionView = new DiaryCollectionView({collection: diaryCollectionList}); 
+                var dcv = diaryCollectionView.render().el;
+                $('#app').html(dcv);
+            });
+            
+        });
+
+        router.on('route:Team', function() {
+            navReset();
+            var getJSON = $.getJSON("team.json");
+            getJSON.then(function(data) {
+                $.each(data, function(index, obj) {
+                    team.push(obj);
+                });
+            }).then(function(){
+                teamList.reset(team);
+                var teamListView = new TeamListView({collection: teamList});
+                cv = teamListView.render().el;
+                $('#app').html(cv);
+                $('.facebook').each(function(){
+                        var facebook = $(this).attr('href');
+                        if (!facebook){
+                            $(this).css({"display":"none"});                
+                        }
+                });
+                $('.twitter').each(function(){
+                        var twitter = $(this).attr('href');
+                        if (!twitter){ 
+                            $(this).css({"display":"none"});                
+                        }
+                });
+                $('.linkedin').each(function(){
+                        var linkedin = $(this).attr('href');
+                        if (!linkedin){
+                            $(this).css({"display":"none"});                
+                        }
+                });
+            });
+        });
+
+        router.on('route:Synopsis', function() {
+            navReset();
+            var synopsisView = new SynopsisView({model: synopsisModel});
+            var sv = synopsisView.render().el;
+            $('#app').html(sv);
+        });
+
+        router.on('route:Contact', function() {
+            navReset();
+            var contactView = new ContactView();
+            var cv = contactView.render().el;
+            $('#app').html(cv);
+
+        });
+
+        router.on('route:Admin-Login', function() {
+            $('#overlaycontainer').css({"z-index":"500", "display": "block"});
+            $('#main-container').css({"display": "none"});
+            $('#side-nav-container').css({"display": "none"});
+            var loginModelView = new LoginModelView();
+            var lv = loginModelView.render().el;
+            var loginNavView = new LoginNavView();
+            var lnv = loginNavView.render().el;
+            $('#overlay-nav').html(lnv);
+            $('#overlay-app').html(lv); 
+        });
+
+        router.on('route:Admin-Diary', function() {
+            articleList = [];
+            diaryJSON = {};
+            $('#overlaycontainer').css({"z-index":"500", "display": "block"});
+            $('#main-container').css({"display": "none"});
+            $('#side-nav-container').css({"display": "none"});
+            var adminNavView = new AdminNavView();
+            var anv = adminNavView.render().el;
+            var adminDiaryView = new AdminDiaryView();
+            var adv = adminDiaryView.render().el;
+            $('#overlay-nav').html(anv);
+            $('#overlay-app').html(adv); 
+        });
+
+        router.on('route:Admin-News', function() {
+            newsList = [];
+            newsJSON = {};
+            $('#overlaycontainer').css({"z-index":"500", "display": "block"});
+            $('#main-container').css({"display": "none"});
+            $('#side-nav-container').css({"display": "none"});
+            var adminNavView = new AdminNavView();
+            var anv = adminNavView.render().el;
+            var adminNewsView = new AdminNewsView();
+            var nv = adminNewsView.render().el;
+            $('#overlay-nav').html(anv);
+            $('#overlay-app').html(nv); 
+        });
+
+        Backbone.history.start();
+
+        // **** END BACKBONE MVC CODE ****
+        $(document).ready(function(){
+            checkWin();
+        });
+ 
+        </script>
+        <!-- endbuild -->
+</body>
+</html>

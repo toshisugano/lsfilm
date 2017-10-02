@@ -1,0 +1,24 @@
+{
+		"id" : "1",
+		"name" : "Payal",
+		"img_small" : "images/payal.jpg",
+		"location" : "Bangalore",
+		"role" : "Director, Producer, & Writer",
+		"twitter" : "https://twitter.com/phillumphile",
+		"facebook" : "https://www.facebook.com/Payaliyaan",
+		"linkedin" : "https://in.linkedin.com/pub/payal-sethi/1/886/283/",
+		"bio" : "X studied film-making at Vassar College & NYU's Tisch School of the Arts. She has worked at Mira Nair&rsquo;s Mirabai Films, the Tribeca Film Festival before launching her own production and distribution company, FilmKaravan. Her short film, Grant St. Shaving Co. won three international awards and played at over a dozen festivals worldwide."
+	},
+	{
+		"id" : "2",
+		"name" : "Samir",
+		"img_small" : "images/samir.jpg",
+		"location" : "Mumbai",
+		"role" : "Writer",
+		"twitter" : "https://twitter.com/samirpatil",
+		"facebook" : "https://www.facebook.com/spatil1",
+		"linkedin" : "https://in.linkedin.com/pub/samir-patil/0/529/aa",
+		"bio" : "Samir is the publisher of scroll.in, a digital daily of news, politics, and culture. He also founded ACK Media (2007) which grew to become India&rsquo;s largest children's media company (acquired by the Future Group, 2011). Prior to ACK, he was an Associate Partner at McKinsey Company, New York."
+	}
+
+
