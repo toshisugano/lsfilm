@@ -25,6 +25,39 @@ var articleList = [];
 var flickrJSON = "https://api.flickr.com/services/rest/?format=json&method=flickr.photosets.getPhotos&api_key=9c6890265e6ddc6256cf9222ccc7f0b1&photoset_id=72157655219839730&user_id=133104268@N05&jsoncallback=?";
 var notdefined = false; 
 
+function imageSlide() {
+    slides = [];
+    //Make sure that the IMG SRC height is set to headheight
+    //$('#img-header').css("height" : headHeight);
+    $('.header-container').css({"height" : headHeight});
+    //Grab all the img elements with the id of image-loader
+    slides = $('#image-loader img');
+    //Get the number of elements pulled and save as variable
+    var slideCount = slides.length; 
+    //Create an empty array container
+    var slideSrc = [];
+
+   //Go through each of the slide elements 
+    slides.each(function(i, data){
+        //Get the src attribute for each slide element
+        imgSrc = data.src;
+        //Push each src onto the slideSrc array
+        slideSrc.push(imgSrc);
+    });
+    //Go through each of the elements in the slideSrc array
+    //For each element, run a function that goes through each value
+    //Then sets the src attribute to the new value
+    $.each(slideSrc, function(i, src){
+        setTimeout(function(){
+            var $imgheader = $('#img-header');
+            $imgheader.hide();
+            $imgheader.attr("src", src).fadeIn(500);     
+            }, 5000 * i);
+
+    });
+    
+}
+
 function checkWin() {
     //set global variables
     //if the window width is less than or equal to 550 
